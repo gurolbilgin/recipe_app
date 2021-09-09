@@ -1,11 +1,17 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import Header from "../../header/Header";
+import homeSvg from '../../../assets/home.svg'
+
 
 const mealTypes = ["Breakfast", "Lunch", "Dinner", "Snack", "Teatime"];
 
-const APP_ID = "e56fa843";
-const APP_KEY = "f2b73b728d1405179875088ee16096de";
+const APP_ID = process.env.REACT_APP_APP_ID;
+const APP_KEY = process.env.REACT_APP_APP_KEY;
+
+console.log(APP_ID);
+console.log(APP_KEY);
+
 
 const Home = () => {
   const [query, setQuery] = useState("pizza");
@@ -42,6 +48,21 @@ const Home = () => {
         setMeal={setMeal}
         meal={meal}
       />
+      {recipes ? (
+        <MainContainer>
+         {recipes ? (
+        <MainContainer>
+          {recipes?.map((recipe, index) => (
+            <RecipeCardComp key={index} recipe={recipe.recipe} />
+          ))}
+        </MainContainer>
+      ) : (
+        <ImgDiv>
+          <HomeImg src={homeSvg} />
+        </ImgDiv>
+      )}
+        </MainContainer>
+      )}
     </div>
   );
 };
