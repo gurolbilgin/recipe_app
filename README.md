@@ -1,7 +1,5 @@
 
 
-# Project-007 : Recipe App (RC-07)
-
 ## Description
 
 Recipe App.
